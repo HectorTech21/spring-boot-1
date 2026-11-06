@@ -1,0 +1,107 @@
+Spring Boot API 1 — registro de peticiones HTTP con curl.exe
+java -jar target/spring-boot-api-1-1.0.0.jar --server.address=127.0.0.1 --server.port=0
+
+> GET http://127.0.0.1:51019/name HTTP/1.1
+HTTP/1.1 404 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 31
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+No hay ningún nombre guardado.
+
+> PUT http://127.0.0.1:51019/name HTTP/1.1
+> Content-Type: text/plain; charset=UTF-8
+>
+> Ana
+HTTP/1.1 404 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 31
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+No hay ningún nombre guardado.
+
+> POST http://127.0.0.1:51019/name HTTP/1.1
+> Content-Type: text/plain; charset=UTF-8
+>
+>    
+HTTP/1.1 400 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 25
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+Connection: close
+
+El nombre es obligatorio.
+
+> POST http://127.0.0.1:51019/name HTTP/1.1
+> Content-Type: text/plain; charset=UTF-8
+>
+> Héctor
+HTTP/1.1 201 
+Location: /name
+Content-Length: 0
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+
+> POST http://127.0.0.1:51019/name HTTP/1.1
+> Content-Type: text/plain; charset=UTF-8
+>
+> Ana
+HTTP/1.1 409 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 26
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+Ya hay un nombre guardado.
+
+> GET http://127.0.0.1:51019/name HTTP/1.1
+HTTP/1.1 200 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 12
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+Hola Héctor
+
+> PUT http://127.0.0.1:51019/name HTTP/1.1
+> Content-Type: text/plain; charset=UTF-8
+>
+>    
+HTTP/1.1 400 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 25
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+Connection: close
+
+El nombre es obligatorio.
+
+> PUT http://127.0.0.1:51019/name HTTP/1.1
+> Content-Type: text/plain; charset=UTF-8
+>
+> Lucía
+HTTP/1.1 200 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 11
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+Hola Lucía
+
+> GET http://127.0.0.1:51019/name HTTP/1.1
+HTTP/1.1 200 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 11
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+Hola Lucía
+
+> DELETE http://127.0.0.1:51019/name HTTP/1.1
+HTTP/1.1 204 
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+
+> GET http://127.0.0.1:51019/name HTTP/1.1
+HTTP/1.1 404 
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 31
+Date: Fri, 06 Nov 2026 21:14:18 GMT
+
+No hay ningún nombre guardado.
+
